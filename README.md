@@ -1,22 +1,24 @@
 # Efficient-Bank
-Final project in Data Structures and Algorithms course. Mainly demonstrates use of red-black trees and some OOP principles.
+Final project in Data Structures and Algorithms course. Mainly demonstrates use of red-black trees and some OOP principles.<br />
+A bank containing customers, their id and balance. Functionality includes adding/removing customers, getting and updating a customer's balance, printing all customers with negative balance and printing the customer with the highest balance. All is done in a low complexity using two binary tress to represent the bank.<br /><br />
+Project's paper has been copy-pasted:<br /><br />
 <div dir="rtl">
 
 * מספר לקוח\חשבון =  .accountId מספר זהות =  .customerId  <br />
 
-מערכת הבנק מורכבת מהמחלקות הבאות:  <br />
+מערכת הבנק מורכבת מהמחלקות הבאות:  <br /><br />
 Customer  - מחלקה המייצגת לקוח בבנק ומכילה את תכונות הלקוח -  <br />
 שם -name <br />
 מספר תעודת זהות -CustomerId  <br />
 מספר לקוח -AccountId  <br />
-יתרה -balance  <br />
-RBTree  - מחלקה אבסטרקטית המייצגת עץ אדום שחור ומכילה תכונת root המצביעה לראש העץ ותכונת nil סטטית המוסכמת בעצים אדומים שחורים. בנוסף מכילה פעולות המשותפות לשני העצים balanceTree ו AccountIdTree והןDelete , DeleteFixup, LeftRoate, RightRotate, InsertFixup. כמו כן, פעולות כלליות יותר -TreeMinimum, TreeMaximum, TreeSuccessor.  <br />
-BalanceTree  - יורשת מ RBTree ומייצגת עץ אדום שחור המנהל את הלקוחות ע"פ יתרה. מכילה פעולות ספציפיות לעץ זה - הכנסה של איבר (ע"פ יתרה).  <br />
-AccountIdTree  - יורשת מ RBTree ומייצגת עץ אדום שחור המנהל את הלקוחות ע"פ מספר חשבון (מס לקוח). מכילה פעולות ספציפיות לעץ זה - הכנסה של איבר (ע"פ מספר חשבון), חיפוש איבר (ע"פ מספר חשבון).  <br />
-Bank  - מחלקה המייצגת את הבנק שלנו. מכילה כתכונות את שני העצים -balanceTree, accountIdTree. כמו כן מכילה את פעולות השאילתות וההודעות המפורטות במטלה - עידכון יתרה, הוספת לקוח חדש, מחיקת לקוח, בדיקת יתרה, שליפת הלקוח בעל היתרה הגבוהה ביותר, הדפסת כל הלקוחות בעלי יתרה שלילית.  <br />
-Node  - מייצג איבר בעץ אדום שחור. בעל התכונות המוסכמותcolor, left, right, p. בנוסף מכיל את התכונות customer המצביע לאובייקט הלקוח שלו ו parallel המצביע ל node המתאים לו (ה node המכיל את אותו אובייקט לקוח) בעץ השני.  <br />
+יתרה -balance  <br /><br />
+RBTree  - מחלקה אבסטרקטית המייצגת עץ אדום שחור ומכילה תכונת root המצביעה לראש העץ ותכונת nil סטטית המוסכמת בעצים אדומים שחורים. בנוסף מכילה פעולות המשותפות לשני העצים balanceTree ו AccountIdTree והןDelete , DeleteFixup, LeftRoate, RightRotate, InsertFixup. כמו כן, פעולות כלליות יותר -TreeMinimum, TreeMaximum, TreeSuccessor.  <br /><br />
+BalanceTree  - יורשת מ RBTree ומייצגת עץ אדום שחור המנהל את הלקוחות ע"פ יתרה. מכילה פעולות ספציפיות לעץ זה - הכנסה של איבר (ע"פ יתרה).  <br /><br />
+AccountIdTree  - יורשת מ RBTree ומייצגת עץ אדום שחור המנהל את הלקוחות ע"פ מספר חשבון (מס לקוח). מכילה פעולות ספציפיות לעץ זה - הכנסה של איבר (ע"פ מספר חשבון), חיפוש איבר (ע"פ מספר חשבון).  <br /><br />
+Bank  - מחלקה המייצגת את הבנק שלנו. מכילה כתכונות את שני העצים -balanceTree, accountIdTree. כמו כן מכילה את פעולות השאילתות וההודעות המפורטות במטלה - עידכון יתרה, הוספת לקוח חדש, מחיקת לקוח, בדיקת יתרה, שליפת הלקוח בעל היתרה הגבוהה ביותר, הדפסת כל הלקוחות בעלי יתרה שלילית.  <br /><br />
+Node  - מייצג איבר בעץ אדום שחור. בעל התכונות המוסכמותcolor, left, right, p. בנוסף מכיל את התכונות customer המצביע לאובייקט הלקוח שלו ו parallel המצביע ל node המתאים לו (ה node המכיל את אותו אובייקט לקוח) בעץ השני.  <br /><br />
 Main - המחלקה בעלת הפעולה הסטטית המשמשת לתחילת הרצת הקוד.  <br /><br />
-פעולות שינוי ושאילתות:  <br />
+פעולות שינוי ושאילתות:  <br /><br />
 UpdateBalanceByAccountId - עדכון יתרה של לקוח ע"פ מספר החשבון(לקוח).  <br />
 השגרה מקבלת את הסכום שיש להוסיף ליתרה (יכול להיות חיובי או שלילי) ואת מספר החשבון שאת יתרתו מעדכנים. נחפש את הלקוח בעץ accountIdTree ונפנה אל ה parallel שלו - זהו איבר הלקוח בעץbalanceTree . נעדכן את היתרה של אובייקט הלקוח (נשמור בידינו אובייקט זה). כעת עץ היתרות עלול להפר את התכונות של עץ חיפוש בינארי. נמחק כל איבר מהעץ שלו וניצור 2 node-ים חדשים וריקים בעלי ה customer ששמרנו קודם. כעת נדאג שכל parallel יצביע ל node המתאים - כלומר ה node-ים יצביעו "אחד לשני" (כל parallel מצביע ל node הנגדי). כל שנותר הוא להוסיף את ה node-ים לעץ ע"י insert.  <br />
 •	חיפוש איבר בעץ, מחיקת איבר והוספת איבר הן פעולות בעלות זמן ריצה O(lg n) ולכן זמן הריצה של שגרה זו הוא (O(lg n.  <br /><br />
